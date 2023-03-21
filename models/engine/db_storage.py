@@ -68,10 +68,10 @@ class DBStorage:
         """delete an element in the table
         """
         if obj:
-            self.session.delete(obj)
+            self.__session.delete(obj)
 
     def reload(self):
-        """configuration
+        """configuration 
         """
         Base.metadata.create_all(self.__engine)
         sec = sessionmaker(bind=self.__engine, expire_on_commit=False)
