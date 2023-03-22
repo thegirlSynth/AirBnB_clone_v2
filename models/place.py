@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """This is the place class"""
-from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Table, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
@@ -48,8 +47,7 @@ class Place(BaseModel, Base):
     amenity_ids = []
 
     if getenv("HBNB_TYPE_STORAGE") == "db":
-        reviews = relationship("Review", cascade='all, delete, delete-orphan',
-                               backref="place")
+        reviews = relationship("Review", cascade="delete", backref="place")
 
         amenities = relationship("Amenity", secondary=place_amenity,
                                  viewonly=False,
@@ -58,17 +56,11 @@ class Place(BaseModel, Base):
         @property
         def reviews(self):
             """ Returns list of reviews.id """
-            var = models.storage.all()
-            lista = []
+            var = list(models.storage.all(Review).values)
             result = []
-            for key in var:
-                review = key.replace('.', ' ')
-                review = shlex.split(review)
-                if (review[0] == 'Review'):
-                    lista.append(var[key])
-            for elem in lista:
-                if (elem.place_id == self.id):
-                    result.append(elem)
+            for val in var:
+                if (val.place_id == self.id):
+                    result.append(val)
             return (result)
 
         @property
