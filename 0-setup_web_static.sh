@@ -17,7 +17,7 @@ content=\
 </html>
 "
 
-echo "$content" | /data/web_static/releases/test/index.html
+echo "$content" | tee /data/web_static/releases/test/index.html > /dev/null
 
 #Create a symbolic link, and deletes it if it already exists
 ln -sf /data/web_static/releases/test /data/web_static/current
@@ -27,7 +27,7 @@ chown -R ubuntu:ubuntu /data/
 
 #Update Nginx configuration
 if ! grep -q "hbnb_static" /etc/nginx/sites-available/default; then
-	sed -i '/server_name _;/a \n\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}\n' /etc/nginx/sites-available/default
+	sed -i '/server_name _;/a \\tlocation /hbnb_static {\n\t\talias /data/web_static/current/;\n\t}\n' /etc/nginx/sites-available/default
 fi
 
 #Restart Nginx
