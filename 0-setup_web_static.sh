@@ -6,7 +6,7 @@ if ! command -v nginx &> /dev/null; then
 fi
 
 #Recursively create directories
-mkdir -p /data/web_static/releases/test /data/web_static/shared
+mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
 
 #Create a fake HTML file
 content=\
@@ -20,7 +20,7 @@ content=\
 echo "$content" | tee /data/web_static/releases/test/index.html > /dev/null
 
 #Create a symbolic link, and deletes it if it already exists
-ln -sf /data/web_static/releases/test /data/web_static/current
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 #Give /data/ ownership to user and group
 chown -R ubuntu:ubuntu /data/
