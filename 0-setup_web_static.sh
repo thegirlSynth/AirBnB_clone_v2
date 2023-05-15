@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 #Install Nginx if not already installed
-if ! command -v nginx &> /dev/null; then
-	apt-get update
-	apt-get -y install nginx
-fi
+apt-get update
+apt-get -y install nginx
 
 #Recursively create directories
 mkdir -p /data/web_static/releases/test/
