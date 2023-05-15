@@ -8,15 +8,7 @@ mkdir -p /data/web_static/releases/test/
 mkdir -p /data/web_static/shared/
 
 #Create a fake HTML file
-content=\
-"
-<html>
-	<body><h1>Happy to be here!</h1>
-	</body>
-</html>
-"
-
-echo "$content" | tee /data/web_static/releases/test/index.html > /dev/null
+echo "Happy to be here!" | tee /data/web_static/releases/test/index.html > /dev/null
 
 #Create a symbolic link, and deletes it if it already exists
 ln -sf /data/web_static/releases/test/ /data/web_static/current
