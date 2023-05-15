@@ -6,7 +6,8 @@ if ! command -v nginx &> /dev/null; then
 fi
 
 #Recursively create directories
-mkdir -p /data/web_static/releases/test/ /data/web_static/shared/
+mkdir -p /data/web_static/releases/test/
+mkdir -p /data/web_static/shared/
 
 #Create a fake HTML file
 content=\
