@@ -14,7 +14,7 @@ def say_hello():
 
 @webapp.route('/hbnb', strict_slashes=False)
 def say_HBNB():
-    return 'HBNB!'
+    return 'HBNB'
 
 
 if __name__ == '__main__':
