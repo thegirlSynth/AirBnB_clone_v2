@@ -11,6 +11,7 @@ webapp = Flask(__name__)
 def say_hello():
     return 'Hello HBNB!'
 
+
 @webapp.route('/hbnb', strict_slashes=False)
 def say_HBNB():
     return 'HBNB!'
