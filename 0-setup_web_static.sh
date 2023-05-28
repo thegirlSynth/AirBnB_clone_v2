@@ -18,7 +18,7 @@ chown -R ubuntu:ubuntu /data/
 
 #Update Nginx configuration
 if ! grep -q "hbnb_static" /etc/nginx/sites-available/default; then
-	sed -i '/server_name _;/a \\tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}\n' /etc/nginx/sites-available/default
+	sed -i "/server_name _;/a \\\tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}\n" /etc/nginx/sites-available/default
 fi
 
 #Restart Nginx
