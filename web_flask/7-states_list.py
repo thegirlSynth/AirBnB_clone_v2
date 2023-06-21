@@ -8,12 +8,14 @@ from models.state import State
 
 newapp = Flask(__name__)
 
+
 @newapp.teardown_appcontext
 def teardown(exception=None):
     """
     Removes the current SQLAlchemy Session
     """
     storage.close()
+
 
 @newapp.route("/states_list", strict_slashes=False)
 def states_list():
